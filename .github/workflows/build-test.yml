@@ -1,0 +1,48 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Show runner
+        run: |
+          echo "Running on:"
+          hostname
+          echo "Runner:"
+          echo "$RUNNER_NAME"
+
+      - name: Check Node.js
+        run: node --version
+        
+      - name: Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Test
+        run: |
+          npm test
+
+      - name: Generate artifact
+        run: |
+          mkdir -p artifact
+          cp -r dist/* artifact/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: artifact/
