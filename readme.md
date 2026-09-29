@@ -141,3 +141,9 @@ jobs:
 ![alt text](graphana-logs-loki.png)
 #Github Repository Runner Online
 ![alt text](github-repo-runner-online.png)
+#Github Actions Workflow
+![alt text](github-actions-workflow.png)
+#Github Upload Artifact
+![alt text](github-upload-artifact.png)
+#Github Artifact Download Page
+![alt text](github-download-artificat.png)
